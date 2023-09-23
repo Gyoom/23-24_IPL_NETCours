@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using EXPalindrome;
 using LINQDataContext;
 using System.Linq;
 
@@ -84,8 +85,8 @@ foreach (var cours in query55)
     Console.WriteLine("Cours : " + cours.Course_Name + ", Prof : " + cours.Professor_Name + ", Section : " + cours.Section_Name);
 }
 
-// Exercice 5.5 :
-Console.WriteLine("\nExercice 5.5 :\n");
+// Exercice 5.7 :
+Console.WriteLine("\nExercice 5.7 :\n");
 
 var query57 = from Section in dc.Sections
               join Prof in dc.Professors on Section.Section_ID equals Prof.Section_ID into SectProfs
@@ -99,6 +100,15 @@ foreach (var section in query57)
         Console.WriteLine(" Prof : " + prof.Professor_Name);
     }
 }
+
+// Exercice 6 :
+Console.WriteLine("\nExercice 6 :\n");
+
+Console.WriteLine("test IsAPalindrome");
+
+Console.WriteLine("été est un palindrome ? " + "été".IsAPalindrome());
+
+Console.WriteLine("bonjour est un palindrome ? " + "bonjour".IsAPalindrome());
 
 
 

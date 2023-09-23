@@ -7,9 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EXPalindrome\EXPalindrome.csproj" />
-    <ProjectReference Include="..\LINQ_DataContext\LINQ_DataContext.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ_DataContext", "LINQ_DataContext.csproj", "{BF9E05C2-280B-41CE-9864-19B2C3211752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Exercices", "..\LINQ_Exercices\LINQ_Exercices.csproj", "{A29C5643-4761-4CEC-A01C-D5F78DE48647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ_Exercices", "..\LINQ_Exercices\LINQ_Exercices.csproj", "{A29C5643-4761-4CEC-A01C-D5F78DE48647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXPalindrome", "..\EXPalindrome\EXPalindrome.csproj", "{4D63F1B4-E5C4-4B28-B678-37BAC9949A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A29C5643-4761-4CEC-A01C-D5F78DE48647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29C5643-4761-4CEC-A01C-D5F78DE48647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29C5643-4761-4CEC-A01C-D5F78DE48647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D63F1B4-E5C4-4B28-B678-37BAC9949A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D63F1B4-E5C4-4B28-B678-37BAC9949A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D63F1B4-E5C4-4B28-B678-37BAC9949A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D63F1B4-E5C4-4B28-B678-37BAC9949A2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
