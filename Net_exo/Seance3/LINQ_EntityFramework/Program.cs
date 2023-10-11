@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using LINQ_EntityFramework.Models;
-using static System.Console; //
+using static System.Console;
 
 WriteLine("Séance 3 : Linq to Entites");
 
