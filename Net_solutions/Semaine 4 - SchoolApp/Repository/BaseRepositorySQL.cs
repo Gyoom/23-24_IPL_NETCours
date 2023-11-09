@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolApp.Models;
+using Semaine_4___SchoolApp.Models;
 using System.Linq.Expressions;
 
-namespace SchoolApp.Repositories
+namespace School.Repository
 {
-    // contient les implementations de base des méthodes d'acces à dbContext définies dans IRepository
-    public class SQLBaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
+
+    public class BaseRepositorySQL<TEntity> : IRepository<TEntity> where TEntity : class
     {
 
         protected readonly SchoolContext _dbContext;
-        public SQLBaseRepository(SchoolContext dbContext)
+        public BaseRepositorySQL(SchoolContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public virtual void Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
 
             _dbContext.Set<TEntity>().Add(entity);
@@ -31,7 +31,6 @@ namespace SchoolApp.Repositories
         public IList<TEntity> SearchFor(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbContext.Set<TEntity>().Where(predicate).ToList();
-
         }
 
         public IList<TEntity> GetAll()
@@ -54,6 +53,7 @@ namespace SchoolApp.Repositories
                 return true;
             }
             SaveChanges();
+
             return false;
         }
 
@@ -65,6 +65,8 @@ namespace SchoolApp.Repositories
             }
             catch (DbUpdateException ex)
             {
+
+                // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbUpdateException(ex.InnerException.Message);
             }
         }

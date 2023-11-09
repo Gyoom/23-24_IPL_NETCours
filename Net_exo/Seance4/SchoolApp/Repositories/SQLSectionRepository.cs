@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using SchoolApp.Models;
 
 namespace SchoolApp.Repositories
-{
+{   
+    // Si necessaire, permet de réimplémenter une fonction existante ou d'impémenter ou nouvelle fonction pour une Collection/table/class spécifique
     internal class SQLSectionRepository : SQLBaseRepository<Section>
     {
         public SQLSectionRepository(SchoolContext context) : base(context) { }
 
-        public new void Insert(Section entity)
+
+        // Quand on réimplémente une fonction, la fonction initiale doit être "virtual" et la fonction réimplémntée doit être override
+        public override void Insert(Section entity)
         {
             List<Section> match = SearchFor(s => s.Name.Equals(entity.Name)).ToList();
             if (match.Count == 0)

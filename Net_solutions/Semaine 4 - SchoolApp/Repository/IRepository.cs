@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace SchoolApp.Repositories
+namespace School.Repository
 {
-    // interface générique pour les repositories, définis les opérations de base que l'on peux effectuer sur les collections de la db
+    // interface générique pour les repositories
     public interface IRepository<T> 
     {
         void Insert(T entity);
