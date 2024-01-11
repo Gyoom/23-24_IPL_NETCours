@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApplication1.ViewModels;
 using WpfEmployee.Models;
 
 namespace WpfEmployee.ViewModels
@@ -26,6 +25,8 @@ namespace WpfEmployee.ViewModels
             }
         }
 
+        // state
+
         private NorthwindContext _dbContext = new NorthwindContext();
 
         private ObservableCollection<EmployeeModel> _EmployeesList;
@@ -38,7 +39,7 @@ namespace WpfEmployee.ViewModels
         private DelegateCommand _removeEmployee;
         private DelegateCommand _saveEmployee;
 
-        // getter / setter
+        // state getter / setter
 
         public ObservableCollection<EmployeeModel> EmployeesList
         {
@@ -70,7 +71,24 @@ namespace WpfEmployee.ViewModels
             set { _selectedEmployee = value; OnPropertyChanged("OrdersList"); }
         }
 
-        // load
+        // commands statement
+
+        public DelegateCommand AddEmployee
+        {
+            get { return _addEmployee = _addEmployee ?? new DelegateCommand(InitAddEmployee); }
+        }
+
+        public DelegateCommand RemoveEmployee
+        {
+            get { return _removeEmployee = _removeEmployee ?? new DelegateCommand(InitRemoveEmployee); }
+        }
+
+        public DelegateCommand SaveEmployee
+        {
+            get { return _saveEmployee = _saveEmployee ?? new DelegateCommand(InitSaveEmployee); }
+        }
+
+        // load state methods
 
         private ObservableCollection<EmployeeModel> LoadEmployees()
         {
@@ -85,14 +103,14 @@ namespace WpfEmployee.ViewModels
 
         private ObservableCollection<OrderModel> LoadOrders()
         {
-         
+
             ObservableCollection<OrderModel> localCollection = new ObservableCollection<OrderModel>();
 
             if (SelectedEmployee == null)
                 return localCollection;
-            else 
+            else
             {
-          
+
                 List<Order> orders = _dbContext.Orders.Select(o => o).Where(o => o.EmployeeId == SelectedEmployee.Id).OrderByDescending(o => o.OrderDate).Take(3).ToList();
                 foreach (Order order in orders)
                 {
@@ -100,7 +118,7 @@ namespace WpfEmployee.ViewModels
                     localCollection.Add(new OrderModel(order, total));
                 }
             }
-            
+
             return localCollection;
         }
 
@@ -109,12 +127,7 @@ namespace WpfEmployee.ViewModels
             return _dbContext.Employees.Select(e => e.TitleOfCourtesy).Distinct().ToList();
         }
 
-        // commands
-
-        public DelegateCommand AddEmployee
-        {
-            get { return _addEmployee = _addEmployee ?? new DelegateCommand(InitAddEmployee); }
-        }
+        // commands init Methods
 
         private void InitAddEmployee()
         {
@@ -124,19 +137,9 @@ namespace WpfEmployee.ViewModels
             SelectedEmployee = employeeModel;
         }
 
-        public DelegateCommand RemoveEmployee
-        {
-            get { return _removeEmployee = _removeEmployee ?? new DelegateCommand(InitRemoveEmployee); }
-        }
-
         private void InitRemoveEmployee()
         {
             _EmployeesList.Remove(SelectedEmployee);
-        }
-
-        public DelegateCommand SaveEmployee
-        {
-            get { return _saveEmployee = _saveEmployee ?? new DelegateCommand(InitSaveEmployee); }
         }
 
         private void InitSaveEmployee()
